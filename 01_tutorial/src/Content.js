@@ -13,6 +13,10 @@ const Content = () => {
     const handleClick2 = (name) => {
         console.log(`${name} was clicked`)
     }
+    //handle event - e for event. Print the event (the click)
+    const handleClick3 = (e) => {
+        console.log(e)
+    }
 
     return(
         <main>
@@ -25,6 +29,10 @@ const Content = () => {
             <button onClick={() => handleClick2('Button 2')}>
                 Click It 2
             </button>
+            <button onClick={(e) => handleClick3(e)}>
+                Click It 3
+            </button>
+            
         </main>
     )
 }
