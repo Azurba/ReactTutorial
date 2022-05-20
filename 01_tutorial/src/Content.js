@@ -15,7 +15,7 @@ const Content = () => {
     const handleNameChange = () => {
         const names = ['Joao','Henrique', 'Pimenta', 'Giudice']
         const int = Math.floor(Math.random() * 4)
-        return setName(names[int]);
+        setName(names[int]);
       }
 
     const handleClick = () => {
@@ -29,7 +29,7 @@ const Content = () => {
     const handleClick3 = (e) => {
         console.log(e)
     }
-    
+
     return(
         <main>
             <p>
