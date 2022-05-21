@@ -1,50 +1,53 @@
 import { useState } from "react"
-
+import { FaTrashAlt } from 'react-icons/fa'
 
 const Content = () => {
+    //list/array state
+    //each item is an object with 3 properties
+    const [items, setItems] = useState([
+        {
+            id:1,
+            checked: false,
+            item: "item 1"
+        },
+        {
+            id:2,
+            checked: false,
+            item: "item 2"
+        },
+        {
+            id:3,
+            checked: false,
+            item: "item 3"
+        },
+        
+    ])
+
     /*
-    State variable. The first variable will hold the current state of 
-    any given time. The second variable will update the first one
-    The default state is given in the parameter of useState()
+    We need to display the items now. Map is the way to do it
+
+    for each element of items, we will return a <li>
+    (item) is like the i in python loops: for i in items
     */
-    const [name, setName] = useState('Joao')
-
-
-    //function definition inside another function
-    //This function will update the state by calling the setName
-    const handleNameChange = () => {
-        const names = ['Joao','Henrique', 'Pimenta', 'Giudice']
-        const int = Math.floor(Math.random() * 4)
-        setName(names[int]);
-      }
-
-    const handleClick = () => {
-        console.log("You Clicked It")
-    }
-    //with a parameter
-    const handleClick2 = (name) => {
-        console.log(`${name} was clicked`)
-    }
-    //handle event - e for event. Print the event (the click)
-    const handleClick3 = (e) => {
-        console.log(e)
-    }
+    
 
     return(
         <main>
-            <p>
-                Hello {name}
-            </p>
-            <button onClick={handleNameChange}>
-                Update name
-            </button>
-            <button onClick={() => handleClick2('Button 2')}>
-                Click It 2
-            </button>
-            <button onClick={(e) => handleClick3(e)}>
-                Click It 3
-            </button>
-            
+            <ul>
+                {items.map((item)=> (
+                    <li className="item" key={item.id}>
+                        <input
+                        type="checkbox"
+                        checked={item.checked}
+                        />
+                        <label>{item.item}</label>
+                        <FaTrashAlt 
+                            role="button" 
+                            tabIndex="0"
+                        />
+                    </li>
+                ))}
+            </ul>
         </main>
     )
 }
