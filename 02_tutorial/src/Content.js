@@ -33,7 +33,17 @@ const Content = () => {
     const handleCheck = (id) => {
         const listItems = items.map((item) => item.id === id ? {...item, 
         checked: !item.checked } : item);
-        setItems(listItems);
+        setItems(listItems);   
+    }
+
+    /*
+    map and filter return arrays of the elements we are passing. However,
+    filter will create an array excluding a especific item. In our case,
+    the item to be removed.
+    */
+    const handleDelete = (id) => {
+        const listItems = items.filter((item) => item.id !== id);
+        setItems(listItems)
     }
 
     /*
@@ -43,7 +53,6 @@ const Content = () => {
     (item) is like the i in python loops: for i in items
     */
     
-
     return(
         <main>
             <ul>
@@ -55,7 +64,8 @@ const Content = () => {
                         checked={item.checked}
                         />
                         <label>{item.item}</label>
-                        <FaTrashAlt 
+                        <FaTrashAlt
+                            onClick={() => handleDelete(item.id)} 
                             role="button" 
                             tabIndex="0"
                         />
